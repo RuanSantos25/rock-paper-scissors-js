@@ -13,6 +13,28 @@ function getHumanChoice() {
     else return null;
 }
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === null) {                                             // Display this message if the player typed something different
+        console.log("Please type only rock, paper or scissors.");           
+    } else if ((humanChoice === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
+         || (humanChoice === "paper" && computerChoice === "rock")
+         || (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+            console.log(`You won! ${humanChoice} beats ${computerChoice}.`); 
+            humanScore++;                                                    
+            console.log(`Computer Score: ${humanScore}`);                    
+    } else if ((humanChoice === "rock" && computerChoice === "paper")        // Conditions for the player(left side) to lose
+        || (humanChoice === "paper" && computerChoice === "scissors")
+        || (humanChoice === "scissors" && computerChoice === "rock")
+    ) {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);    
+        computerScore++;                                                     
+        console.log(`Computer Score: ${computerScore}`);                     
+    } else {                                                                 // It's a tie
+        console.log("It's a draw! no one scores this round.");               
+    }
+}
+
 
 let humanScore = 0;
 let computerScore = 0;
