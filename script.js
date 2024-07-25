@@ -12,3 +12,7 @@ function getHumanChoice() {
     else if (humanChoice.toLowerCase() === "scissors") return "scissors";
     else return null;
 }
+
+
+let humanScore = 0;
+let computerScore = 0;
