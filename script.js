@@ -17,10 +17,12 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     let maxGameRounds = 5;
+    let round = 1;
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === null) {                                             // Display this message if the player typed something different
-            console.log("Please type only rock, paper or scissors.");           
+            console.log("Please type only rock, paper or scissors."); 
+            return false;                                                       // Invalid round
         } else if ((humanChoice === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
              || (humanChoice === "paper" && computerChoice === "rock")
              || (humanChoice === "scissors" && computerChoice === "paper")
@@ -37,11 +39,16 @@ function playGame() {
             console.log(`Computer Score: ${computerScore}`);                     
         } else {                                                                 // It's a tie
             console.log("It's a draw! no one scores this round.");               
+            return false;                                                       // Invalid round
         }
+        
+        return true;                                                            // Valid round
     }
 
-    for (let round = 1; round <= maxGameRounds; round++) {
-        playRound(getHumanChoice(), getComputerChoice());
+    while (round <= maxGameRounds) {
+        console.log(`Round: ${round}`);
+        checkValidGame = playRound(getHumanChoice(), getComputerChoice());
+        if (checkValidGame) round++;                                           // Only progress to the next round if the move is valid
     }
 }
 
