@@ -59,7 +59,7 @@ function playGame() {
     }
 
     while (round <= maxGameRounds) {
-        console.log(`Round: ${round}`);
+        console.log(`\nRound: ${round}`);
         checkValidGame = playRound(getHumanChoice(), getComputerChoice());
         if (checkValidGame) round++;                                             // Only progress to the next round if the move is valid
     }
