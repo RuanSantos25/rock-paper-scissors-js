@@ -29,7 +29,7 @@ function playGame() {
         ) {
                 console.log(`You won! ${humanChoice} beats ${computerChoice}.`); 
                 humanScore++;                                                    
-                console.log(`Computer Score: ${humanScore}`);                    
+                console.log(`Human Score: ${humanScore}`);                    
         } else if ((humanChoice === "rock" && computerChoice === "paper")        // Conditions for the player(left side) to lose
             || (humanChoice === "paper" && computerChoice === "scissors")
             || (humanChoice === "scissors" && computerChoice === "rock")
@@ -37,18 +37,18 @@ function playGame() {
             console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);    
             computerScore++;                                                     
             console.log(`Computer Score: ${computerScore}`);                     
-        } else {                                                                 // It's a tie
+        } else {                                                                 // It's a tie round
             console.log("It's a draw! no one scores this round.");               
-            return false;                                                       // Invalid round
+            return false;                                                        // Invalid round
         }
         
-        return true;                                                            // Valid round
+        return true;                                                             // Valid round
     }
 
     while (round <= maxGameRounds) {
         console.log(`Round: ${round}`);
         checkValidGame = playRound(getHumanChoice(), getComputerChoice());
-        if (checkValidGame) round++;                                           // Only progress to the next round if the move is valid
+        if (checkValidGame) round++;                                             // Only progress to the next round if the move is valid
     }
 }
 
