@@ -13,6 +13,17 @@ function getHumanChoice() {
     else return null;
 }
 
+function checkWin(humanScore, computerScore) {
+    console.log("\n*** FINAL SCORE ***");
+    console.log(`HUMAN: ${humanScore}`);
+    console.log(`COMPUTER: ${computerScore}`);
+    if (humanScore > computerScore) {
+        console.log('YOU WIN!');
+    } else {
+        console.log('YOU LOSE!');
+    }
+}
+
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
@@ -20,6 +31,8 @@ function playGame() {
     let round = 1;
 
     function playRound(humanChoice, computerChoice) {
+        console.log(`Human Choice: ${humanChoice}`);
+        console.log(`Computer Choice: ${computerChoice}`);
         if (humanChoice === null) {                                             // Display this message if the player typed something different
             console.log("Please type only rock, paper or scissors."); 
             return false;                                                       // Invalid round
@@ -50,6 +63,8 @@ function playGame() {
         checkValidGame = playRound(getHumanChoice(), getComputerChoice());
         if (checkValidGame) round++;                                             // Only progress to the next round if the move is valid
     }
+
+    checkWin(humanScore, computerScore);
 }
 
 
