@@ -16,6 +16,7 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
+    let maxGameRounds = 5;
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === null) {                                             // Display this message if the player typed something different
@@ -39,7 +40,9 @@ function playGame() {
         }
     }
 
-    playRound(getHumanChoice(), getComputerChoice());
+    for (let round = 1; round <= maxGameRounds; round++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 }
 
 
