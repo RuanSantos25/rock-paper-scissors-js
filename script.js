@@ -25,37 +25,59 @@ function checkWin(humanScore, computerScore) {
 }
 
 function playRound(playerSelection, computerChoice) {
-    console.log(`Human Choice: ${playerSelection}`);
-    console.log(`Computer Choice: ${computerChoice}`);
-    if (playerSelection === null) {                                             // Display this message if the player typed something different
-        console.log("Please type only rock, paper or scissors.");
-    } else if ((playerSelection === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
-            || (playerSelection === "paper" && computerChoice === "rock")
-            || (playerSelection === "scissors" && computerChoice === "paper")
-    ) {
-            console.log(`You won! ${playerSelection} beats ${computerChoice}.`);                   
+    if (humanScore >= maxGameScore || computerScore >= maxGameScore) return;
+    if ((playerSelection === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
+        || (playerSelection === "paper" && computerChoice === "rock")
+        || (playerSelection === "scissors" && computerChoice === "paper")) 
+    {
+        displayResult.textContent = `You won the round! ${playerSelection} beats ${computerChoice}.`;
+        humanScore++;
+        displayPlayerScore.textContent = "Human Score: " + humanScore;
     } else if ((playerSelection === "rock" && computerChoice === "paper")        // Conditions for the player(left side) to lose
         || (playerSelection === "paper" && computerChoice === "scissors")
-        || (playerSelection === "scissors" && computerChoice === "rock")
-    ) {
-        console.log(`You lose! ${computerChoice} beats ${playerSelection}.`);                        
+        || (playerSelection === "scissors" && computerChoice === "rock")) 
+    {
+        displayResult.textContent = `You lose the round! ${computerChoice} beats ${playerSelection}.`;
+        computerScore++;
+        displayComputerScore.textContent = "Computer Score: " + computerScore;
     } else {                                                                 // It's a tie round
-        console.log("It's a draw! no one scores this round.");               
+        displayResult.textContent = "It's a draw! no one scores this round.";               
+    }
+    if (humanScore >= maxGameScore) {
+        displayResult.textContent = "";
+        displayGameOver.textContent = "GAME OVER: YOU WIN!";
+    } else if (computerScore >= maxGameScore) {
+        displayResult.textContent = "";
+        displayGameOver.textContent = "GAME OVER: YOU LOSE!";
     }
 }
+
 
 const btnRock = document.querySelector("#btn-rock");
 const btnPaper = document.querySelector("#btn-paper");
 const btnScissors = document.querySelector("#btn-scissors");
+const maxGameScore = 5;
+const displayGameOver = document.createElement("p");
+let humanScore = 0;
+let computerScore = 0;
+let div = document.querySelector("#result");
+let displayPlayerScore = document.createElement("p");
+let displayComputerScore = document.createElement("p");
+let displayResult = document.createElement("p");
+
+displayPlayerScore.textContent = "Human Score: " + humanScore;
+div.appendChild(displayPlayerScore);
+displayComputerScore.textContent = "Computer Score: " + computerScore;
+div.appendChild(displayComputerScore);
+div.appendChild(displayResult);
+div.appendChild(displayGameOver);
 
 btnRock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
 });
-
 btnPaper.addEventListener("click", () => {
     playRound("paper", getComputerChoice());
 });
-
 btnScissors.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
 });
