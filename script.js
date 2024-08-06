@@ -43,3 +43,19 @@ function playRound(playerSelection, computerChoice) {
         console.log("It's a draw! no one scores this round.");               
     }
 }
+
+const btnRock = document.querySelector("#btn-rock");
+const btnPaper = document.querySelector("#btn-paper");
+const btnScissors = document.querySelector("#btn-scissors");
+
+btnRock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+});
+
+btnPaper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+});
+
+btnScissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+});
