@@ -5,25 +5,6 @@ function getComputerChoice() {
     else return "scissors";
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("rock, paper or scissors?");
-    if (humanChoice.toLowerCase() === "rock") return "rock";
-    else if (humanChoice.toLowerCase() === "paper") return "paper";
-    else if (humanChoice.toLowerCase() === "scissors") return "scissors";
-    else return null;
-}
-
-function checkWin(humanScore, computerScore) {
-    console.log("\n*** FINAL SCORE ***");
-    console.log(`HUMAN: ${humanScore}`);
-    console.log(`COMPUTER: ${computerScore}`);
-    if (humanScore > computerScore) {
-        console.log('YOU WIN!');
-    } else {
-        console.log('YOU LOSE!');
-    }
-}
-
 function playRound(playerSelection, computerChoice) {
     if (humanScore >= maxGameScore || computerScore >= maxGameScore) return;
     if ((playerSelection === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
