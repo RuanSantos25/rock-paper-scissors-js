@@ -7,21 +7,21 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerChoice) {
     if (humanScore >= maxGameScore || computerScore >= maxGameScore) return;
-    if ((playerSelection === "rock" && computerChoice === "scissors")    // Conditions for the player(left side) to win
+    if ((playerSelection === "rock" && computerChoice === "scissors")
         || (playerSelection === "paper" && computerChoice === "rock")
-        || (playerSelection === "scissors" && computerChoice === "paper")) 
+        || (playerSelection === "scissors" && computerChoice === "paper"))
     {
         displayResult.textContent = `You won the round! ${playerSelection} beats ${computerChoice}.`;
         humanScore++;
         displayPlayerScore.textContent = "Human Score: " + humanScore;
-    } else if ((playerSelection === "rock" && computerChoice === "paper")        // Conditions for the player(left side) to lose
+    } else if ((playerSelection === "rock" && computerChoice === "paper")
         || (playerSelection === "paper" && computerChoice === "scissors")
-        || (playerSelection === "scissors" && computerChoice === "rock")) 
+        || (playerSelection === "scissors" && computerChoice === "rock"))
     {
         displayResult.textContent = `You lose the round! ${computerChoice} beats ${playerSelection}.`;
         computerScore++;
         displayComputerScore.textContent = "Computer Score: " + computerScore;
-    } else {                                                                 // It's a tie round
+    } else {
         displayResult.textContent = "It's a draw! no one scores this round.";               
     }
     if (humanScore >= maxGameScore) {
